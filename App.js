@@ -1,104 +1,84 @@
 import React from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { StyleSheet, View, Text } from 'react-native';
+
 
 const App = () => {
   return (
     <View style={styles.container}>
 
-      <View style={styles.containerTop}>
-        <View style={styles.top}>
-          <Text style={styles.topText}>Top Left</Text>
-        </View>
-      </View>
-        
-
-      <View style={styles.containerCenter}>
-        <View style={styles.center}>
-          <Text style={styles.centerText}>Center</Text>
-        </View>
+      <View style={styles.top}>
+        <Text style={styles.text}>Top Left</Text>
       </View>
 
-      <View style={styles.containerBottom}>
-        <View style={styles.bottom}>
-          <Text style={styles.bottomText}>Bottom Right</Text>
+      <View style={styles.bottom}>
+        <View style={styles.bottomLeft}>
+        <Text style={styles.text}>Bottom Left</Text>
         </View>
+         
+        <View style={styles.bottomRight}>
+          <View style={styles.bottomRightTop}>
+            {/* Dùng mảng để đọc cả 2 thuộc tính, ưu tiên nhận cái sau cùng */}
+            <Text style={[styles.text,styles.textBottom]}>Bottom Right</Text>
+          </View>
+          <View style={styles.bottomRightBottom}> 
+            <Text style={[styles.text,styles.textBottom]}>Bottom Right</Text> 
+          </View>
+        </View>
+
       </View>
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container : {
-    backgroundColor : '#E8F8F7',
     flex : 1
   },
 
-  containerTop : {
-    backgroundColor : 'green',
-    flex : 1
-  },
-
-  top : {
-    marginHorizontal: 20,
-    marginTop : 25,
-    paddingHorizontal : 10,
-    paddingVertical : 10,
-    backgroundColor : '#FAF3FA',
-    borderWidth : 3,
-    borderColor : 'red'
-  },
-  
-  topText: {
-    fontSize : 20,
-    color : '#3390FF'
-  },
-
-  containerCenter : {
-    backgroundColor : 'red',
+  top :  {
     flex : 1,
+    backgroundColor : 'yellow',
     justifyContent : 'center',
     alignItems : 'center'
   },
-  
-  center : {
-    width : 150,
-    height : 150,
-    backgroundColor : '#FAF3FA',
-    borderRadius : 100,     //Bo tròn background
-    justifyContent : 'center',  //Canh giữa chiều dọc
-    alignItems : 'center'   //Canh giữa chiều ngang
-  },
-  
-  centerText: {
-    fontSize : 20,
-    color : '#3390FF',
-    fontWeight : 'bold'   //In đậm chữ
+  text : {
+    fontSize : 22,
+    fontWeight : 'bold',
+    color : 'blue'
   },
 
-  containerBottom : {
-    backgroundColor : 'yellow',
-    flex : 1
-  },
-  
   bottom : {
-    marginHorizontal: 20,
-    marginTop : 170,
-    paddingHorizontal : 10,
-    paddingVertical : 10,
-    backgroundColor : '#FAF3FA',
-    borderWidth : 3,
-    borderColor : 'red',
-    borderRadius : 22     //Bo tròn background
-    
+    flex : 1,
+    flexDirection : 'row'   //Mặc định là 'Col'
   },
-  
-  bottomText: {
-    textAlign : 'right',
-    fontSize : 20,
-    color : '#3390FF',
-    fontWeight : 'bold'   //In đậm chữ
+  bottomLeft : {
+    flex : 1,
+    backgroundColor : 'green',
+    alignItems : 'center',
+    justifyContent : 'center'
+  },
+
+  bottomRight : {
+    flex : 1,
+  },
+  bottomRightTop : {
+    flex : 2,   //flex gấp đôi bottomRightBottom
+    backgroundColor : '#ee3ee7',
+    alignItems : 'center',
+    justifyContent : 'center'
+  },
+  bottomRightBottom : {
+    flex : 1,
+    backgroundColor : '#379fd9',
+    alignItems : 'center',
+    justifyContent : 'center'
+  },
+  textBottom : {  //Dùng mảng để set nhận cả 2 thuộc tính, ưu tiên nhận cái sau cùng
+    color : 'white',
+    fontSize : 18
   }
+  
 });
 
 export default App;
