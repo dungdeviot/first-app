@@ -16,8 +16,13 @@ const styles = StyleSheet.create({
     height: 40,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#35bbf0",
     borderRadius: 10,
+  },
+  even: {
+    backgroundColor: "#f5e97a",
+  },
+  odd: {
+    backgroundColor: "#35bbf0",
   },
   number: {
     fontSize: 14,
@@ -31,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles
+export default styles;

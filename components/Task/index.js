@@ -1,15 +1,18 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react"; //key "rnfe"
-import styles from './style';
+import styles from "./style";
 
-const Task = () => {
+const Task = (props) => {
+  const { number } = props;
+  const numberText = number < 10 ? `0${number}` : number;
+  const itemBg = number % 2 == 0 ? styles.even : styles.odd;
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={props.onDeleteTask}>
       <View style={styles.item}>
-        <View style={styles.square}>
-          <Text style={styles.number}>01</Text>
+        <View style={[styles.square, itemBg]}>
+          <Text style={styles.number}>{numberText}</Text>
         </View>
-        <Text style={styles.content}>Task 1</Text>
+        <Text style={styles.content}>{props.title}</Text>
       </View>
     </TouchableOpacity>
   );
